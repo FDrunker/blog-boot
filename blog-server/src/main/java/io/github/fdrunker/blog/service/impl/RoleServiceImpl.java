@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.fdrunker.blog.entity.system.RoleEntity;
 import io.github.fdrunker.blog.mapper.RoleMapper;
 import io.github.fdrunker.blog.service.RoleService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, RoleEntity> implements RoleService {
 }

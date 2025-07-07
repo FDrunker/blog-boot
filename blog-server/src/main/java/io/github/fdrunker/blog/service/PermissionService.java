@@ -1,4 +1,7 @@
 package io.github.fdrunker.blog.service;
 
-public interface PermissionService {
+import com.baomidou.mybatisplus.extension.service.IService;
+import io.github.fdrunker.blog.entity.system.PermissionEntity;
+
+public interface PermissionService extends IService<PermissionEntity> {
 }
