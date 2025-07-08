@@ -1,4 +1,4 @@
-package io.github.fdrunker.blog.entity;
+package io.github.fdrunker.blog.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;

@@ -77,6 +77,11 @@ public class GlobalConstant {
     public static final String TOKEN_NAME = "Authorization";
 
     /**
+     * 用于mybatis-plus selectOne()方法调用，确保取出的结果只有一条，防止报错
+     */
+    public static final String LAST_LIMIT_1 = "LIMIT 1";
+
+    /**
      * 启用
      */
     public static final Integer ENABLE = 1;

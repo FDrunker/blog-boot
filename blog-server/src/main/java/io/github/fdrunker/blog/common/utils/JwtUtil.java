@@ -7,12 +7,13 @@ import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import io.github.fdrunker.blog.common.constant.GlobalConstant;
 import io.github.fdrunker.blog.common.exception.ErrorCode;
-import io.github.fdrunker.blog.common.exception.ParamCheckException;
+import io.github.fdrunker.blog.common.exception.CheckException;
 import io.github.fdrunker.blog.common.model.TokenBean;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.util.List;
 import java.util.Objects;
 
 public class JwtUtil {
@@ -21,6 +22,8 @@ public class JwtUtil {
     private static final String USER_ID = "userId";
     private static final String USER_TYPE = "userType";
     private static final String ROLE_ID = "roleId";
+    private static final String ROLE_NAME = "roleName";
+    private static final String PERMISSION_LIST = "permissionList";
     private static final String SESSION_KEY = "sessionKey";
     private static final String OPEN_ID = "openId";
 
@@ -132,7 +135,7 @@ public class JwtUtil {
     private static DecodedJWT getJwt() {
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (Objects.isNull(servletRequestAttributes)) {
-            throw new ParamCheckException(ErrorCode.PARAM_ERROR);
+            throw new CheckException(ErrorCode.PARAM_ERROR);
         }
         HttpServletRequest request = servletRequestAttributes.getRequest();
         String authorization = request.getHeader("Authorization");
@@ -147,12 +150,38 @@ public class JwtUtil {
      *
      * @return 角色信息
      */
-    public static String getRoleList() {
+    public static Long getRoleList() {
         DecodedJWT jwt = getJwt();
         if (jwt == null) {
             return null;
         }
-        return jwt.getClaim(ROLE_ID).asString();
+        return jwt.getClaim(ROLE_ID).asLong();
+    }
+
+    /**
+     * 获取token中的role name
+     *
+     * @return 角色信息
+     */
+    public static String getRoleName() {
+        DecodedJWT jwt = getJwt();
+        if (jwt == null) {
+            return null;
+        }
+        return jwt.getClaim(ROLE_NAME).asString();
+    }
+
+    /**
+     * 获取token中的permission list
+     *
+     * @return 权限信息
+     */
+    public static List<String> getPermissionList() {
+        DecodedJWT jwt = getJwt();
+        if (jwt == null) {
+            return null;
+        }
+        return jwt.getClaim(PERMISSION_LIST).asList(String.class);
     }
 
     /**
@@ -212,6 +241,8 @@ public class JwtUtil {
                 .withClaim(USER_ID, tokenBean.getUserId())
                 .withClaim(USER_TYPE, tokenBean.getUserType())
                 .withClaim(ROLE_ID, tokenBean.getRoleId())
+                .withClaim(ROLE_NAME, tokenBean.getRoleName())
+                .withClaim(PERMISSION_LIST, tokenBean.getPermissionList())
                 .withClaim(SESSION_KEY, tokenBean.getSessionKey())
                 .withClaim(OPEN_ID, tokenBean.getOpenId())
                 .sign(algorithm);

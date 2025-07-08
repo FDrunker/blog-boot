@@ -5,7 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import io.github.fdrunker.blog.common.constant.GlobalConstant;
 import io.github.fdrunker.blog.common.annotation.OperationLog;
 import io.github.fdrunker.blog.common.utils.JwtUtil;
-import io.github.fdrunker.blog.entity.system.OperateLogEntity;
+import io.github.fdrunker.blog.pojo.entity.system.OperateLogEntity;
 import io.github.fdrunker.blog.mapper.OperateLogMapper;
 import io.micrometer.common.util.StringUtils;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +25,9 @@ import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * 操作日志切面类
+ */
 @Aspect
 @Component
 @Slf4j
@@ -33,11 +36,11 @@ public class SystemLogAspect {
 
     private final OperateLogMapper operateLogMapper;
 
-    @Pointcut(value = "@annotation(io.github.fdrunker.blog.common.annotation.OperationLog)")
+    @Pointcut("@annotation(io.github.fdrunker.blog.common.annotation.OperationLog)")
     public void systemLog() {
     }
 
-    @Around(value = "systemLog()")
+    @Around("systemLog()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed;
         // 定义执行开始时间

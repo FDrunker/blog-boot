@@ -1,0 +1,15 @@
+# 配置mybatis-plus的xml和bean的目录
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config: #逻辑删除配置
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+    refresh-mapper: true # 刷新mapper 调试神器
+
+# 配置jwt
+jwt:
+  expireTime: 3600 # token过期时间(单位: 秒)

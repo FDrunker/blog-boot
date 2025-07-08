@@ -1,8 +1,8 @@
-package io.github.fdrunker.blog.entity.system;
+package io.github.fdrunker.blog.pojo.entity.system;
 
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.fdrunker.blog.entity.BaseEntity;
+import io.github.fdrunker.blog.pojo.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package io.github.fdrunker.blog.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.github.fdrunker.blog.entity.system.OperateLogEntity;
+import io.github.fdrunker.blog.pojo.entity.system.OperateLogEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

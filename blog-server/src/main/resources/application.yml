@@ -1,11 +1,8 @@
 server:
   port: 8080
 
-alibaba:
-  cloud:
-    oss:
-      endpoint: oss-cn-hangzhou.aliyuncs.com
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: io.github.fdrunker.blog.entity
+spring:
+  application:
+    name: maple-admin
+  profiles:
+    active: dev

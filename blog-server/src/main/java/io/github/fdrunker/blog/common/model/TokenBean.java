@@ -1,8 +1,19 @@
 package io.github.fdrunker.blog.common.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
+/**
+ * 登录Token信息
+ */
 @Data
+@Builder
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class TokenBean {
 
     /**
@@ -31,8 +42,18 @@ public class TokenBean {
     private String userType;
 
     /**
-     * 角色信息拼接字符串
+     * 角色ID
      */
-    private String roleId;
+    private Long roleId;
+
+    /**
+     * 角色名称
+     */
+    private String roleName;
+
+    /**
+     * 权限列表
+     */
+    private List<String> permissionList;
 
 }

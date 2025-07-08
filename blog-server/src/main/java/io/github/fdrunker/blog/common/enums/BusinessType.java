@@ -3,7 +3,7 @@ package io.github.fdrunker.blog.common.enums;
 /**
  * 操作类型枚举
  */
-public enum OperationType {
+public enum BusinessType {
     /**
      * 查询
      */

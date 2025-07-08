@@ -6,7 +6,7 @@ plugins {
 
 group = 'io.github.fdrunker'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '19'
+sourceCompatibility = '17'
 
 configurations {
     compileOnly {
@@ -23,21 +23,27 @@ ext {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // spring boot
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
-    implementation 'com.alibaba.cloud:aliyun-oss-spring-boot-starter'
-    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.12'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation "io.springfox:springfox-boot-starter:3.0.0"
+    // mybatis plus
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.12'
+    // jwt
     implementation 'com.auth0:java-jwt:3.12.0'
+    // 阿里云
+    implementation 'com.alibaba.cloud:aliyun-oss-spring-boot-starter'
     implementation 'com.alibaba:fastjson:2.0.28'
+    // shiro
+    implementation 'org.apache.shiro:shiro-spring-boot-starter:2.0.0'
+    // lombok
     compileOnly 'org.projectlombok:lombok'
+    // devtools
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.taobao.arthas:arthas-spring-boot-starter:3.6.7'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 dependencyManagement {
