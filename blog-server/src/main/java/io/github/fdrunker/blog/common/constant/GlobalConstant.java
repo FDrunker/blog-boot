@@ -21,13 +21,13 @@ public class GlobalConstant {
     public static final String SECRET = "fdrunker20001124";
 
     /**
-     * 管理员用户登录token保存在redis的key值
+     * 用户登录token保存在redis的key值
      *
      * @param account 用户登录帐号
      * @return token保存在redis的key
      */
     public static String getRedisUserKey(String account) {
-        return "MAPLE_BOOT_ADMIN:" + account;
+        return "BLOG_BOOT_TOKEN:" + account;
     }
 
     /**
@@ -37,7 +37,7 @@ public class GlobalConstant {
      * @return token保存在redis的key
      */
     public static String getAppletRedisUserKey(String account) {
-        return "MAPLE_APPLET:" + account;
+        return "BLOG_APPLET:" + account;
     }
 
 
@@ -48,7 +48,7 @@ public class GlobalConstant {
      * @return token保存在redis的key
      */
     public static String getWebRedisUserKey(Long account) {
-        return "MAPLE_BOOT_WEB:" + account;
+        return "BLOG_BOOT_WEB:" + account;
     }
 
     /**
@@ -58,7 +58,7 @@ public class GlobalConstant {
      * @return 保存在redis的key
      */
     public static String getAppletAuthRedisKey(String uniCode) {
-        return "MAPLE_APPLET_AUTH:" + uniCode;
+        return "BLOG_APPLET_AUTH:" + uniCode;
     }
 
     /**
@@ -68,7 +68,7 @@ public class GlobalConstant {
      * @return 保存在redis的key
      */
     public static String getAppletAuthResultRedisKey(String uniCode) {
-        return "MAPLE_APPLET_AUTH_RESULT:" + uniCode;
+        return "BLOG_APPLET_AUTH_RESULT:" + uniCode;
     }
 
     /**

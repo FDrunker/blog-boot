@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
@@ -53,12 +54,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         if (!Md5Util.verifyPassword(loginDTO.getPassword(), user.getPassword(), user.getSalt())) {
             throw new CheckException(ErrorCode.USER_LOGIN_ERROR);
         }
-
+        // 获取权限
         RoleEntity role = roleMapper.selectById(user.getRoleId());
         List<String> permissions = permissionMapper.selectList(
                 Wrappers.lambdaQuery(PermissionEntity.class)
                         .eq(PermissionEntity::getRoleId, user.getRoleId())
         ).stream().map(PermissionEntity::getCode).toList();
+        // 登录权限校验
+        if (permissions.stream().anyMatch(permission ->
+                Pattern.matches(permission.replace("*", ".*"), "user:manage:login")
+        )) {
+            throw new CheckException(ErrorCode.PERMISSION_ERROR);
+        }
+        // 创建token
         TokenBean tokenBean = TokenBean.builder()
                 .userId(user.getId())
                 .userType(user.getUserType())
