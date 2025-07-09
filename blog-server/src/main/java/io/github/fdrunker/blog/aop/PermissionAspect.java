@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Aspect
 @Component
@@ -35,8 +36,8 @@ public class PermissionAspect {
             return;
         }
 
-        String permission = annotation.value();
-        if (StringUtils.isEmpty(permission)) {
+        String value = annotation.value();
+        if (StringUtils.isEmpty(value)) {
             return;
         }
 
@@ -45,7 +46,9 @@ public class PermissionAspect {
             return;
         }
 
-        if (!permissionList.contains(permission)) {
+        if (permissionList.stream().anyMatch(permission ->
+                Pattern.matches(permission.replace("*", ".*"), value)
+        )) {
             throw new PermissionException(ErrorCode.PERMISSION_ERROR);
         }
     }

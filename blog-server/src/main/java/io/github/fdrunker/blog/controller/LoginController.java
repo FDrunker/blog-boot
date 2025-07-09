@@ -1,4 +1,4 @@
-package io.github.fdrunker.blog.controller.manage;
+package io.github.fdrunker.blog.controller;
 
 import io.github.fdrunker.blog.common.annotation.OperationLog;
 import io.github.fdrunker.blog.common.enums.BusinessType;

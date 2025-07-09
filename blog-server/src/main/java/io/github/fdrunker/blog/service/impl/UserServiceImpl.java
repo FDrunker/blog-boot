@@ -60,12 +60,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
                 Wrappers.lambdaQuery(PermissionEntity.class)
                         .eq(PermissionEntity::getRoleId, user.getRoleId())
         ).stream().map(PermissionEntity::getCode).toList();
-        // 登录权限校验
-        if (permissions.stream().anyMatch(permission ->
-                Pattern.matches(permission.replace("*", ".*"), "user:manage:login")
-        )) {
-            throw new CheckException(ErrorCode.PERMISSION_ERROR);
-        }
         // 创建token
         TokenBean tokenBean = TokenBean.builder()
                 .userId(user.getId())
