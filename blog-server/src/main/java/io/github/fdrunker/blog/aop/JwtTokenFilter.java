@@ -26,15 +26,14 @@ import java.util.regex.Pattern;
  */
 @WebFilter(filterName = "jwtFilter", urlPatterns = {"/*"})
 @RequiredArgsConstructor
-public class JwtFilter implements Filter {
+public class JwtTokenFilter implements Filter {
 
     private final List<String> excludedUrlList;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         excludedUrlList.addAll(Arrays.asList(
-                "/manage/sso/login",
-                "/website/login"
+                "/login"
         ));
     }
 

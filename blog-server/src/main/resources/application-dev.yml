@@ -1,3 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: org.apache.ibatis.datasource.unpooled.UnpooledDataSource.DriverProxy
+    url: jdbc:mysql://localhost:3306/blog_boot?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
 # 配置mybatis-plus的xml和bean的目录
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
