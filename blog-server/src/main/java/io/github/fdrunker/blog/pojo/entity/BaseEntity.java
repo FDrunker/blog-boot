@@ -22,21 +22,19 @@ public class BaseEntity implements Serializable {
     
     @ApiModelProperty("创建人id")
     @TableField(value = "create_id", fill = FieldFill.INSERT)
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Long createId;
 
     @ApiModelProperty("创建时间")
     @TableField(value = "create_time", fill = FieldFill.INSERT)
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     @ApiModelProperty("更新人id")
     @TableField(value = "update_id", fill = FieldFill.INSERT_UPDATE)
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Long updateId;
 
     @ApiModelProperty("更新时间")
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 }

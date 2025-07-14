@@ -35,8 +35,8 @@ dependencies {
     // 阿里云
     implementation 'com.alibaba.cloud:aliyun-oss-spring-boot-starter'
     implementation 'com.alibaba:fastjson:2.0.28'
-    // shiro
-    implementation 'org.apache.shiro:shiro-spring-boot-starter:2.0.0'
+    // page helper
+    implementation 'com.github.pagehelper:pagehelper:6.1.1'
     // lombok
     compileOnly 'org.projectlombok:lombok'
     // devtools
